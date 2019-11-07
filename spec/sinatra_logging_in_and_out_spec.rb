@@ -77,6 +77,7 @@ describe 'ApplicationController' do
 
     it 'displays the account information if a user is logged in' do
       user1 = User.create(:username => "skittles123", :password => "iluvskittles", :balance => 1000)
+      binding.pry
       params = {
         "username"=> "skittles123", "password" => "iluvskittles"
       }
@@ -97,7 +98,7 @@ describe 'ApplicationController' do
       get '/logout'
       expect(session[:user_id]).to be(nil)
     end
-    
+
     it 'redirects to \'/\'' do
       get '/logout'
       follow_redirect!
